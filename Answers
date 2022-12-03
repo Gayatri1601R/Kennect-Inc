@@ -1,0 +1,89 @@
+Write and submit code to set up a handler for a focus-event on an input element having id name which is direct child of an element having id john.
+1) When run the handler should add the HTML class shape to all elements having a HTML class of important which are direct children of an element having id john.
+2) The event should not propagate beyond the handler.
+
+Solution - 
+import './App.css';
+import logo from './logo.svg';
+
+function App() {
+  function FocusHandler() {
+    document.getElementsByClassName('important').style.cssText = 'height:50px; width: 50px; background-color:#555; border-radius:0%; display:block; margin-left:auto; margin-right:auto;'
+  }
+  return (
+    <div className="App">
+      <div id='john'>
+        <label>
+          Name
+        </label>
+        <input id='name' onFocus={FocusHandler} style={{ margin: '1em' }}>
+        </input>
+        <label>
+          Phone
+        </label>
+        <input>
+        </input>
+        <h2>Shape</h2>
+        <div className="important">
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+
+Explain JWT in approx and prove it's top 3 benefits.
+solution -
+A JSON web token(JWT) is JSON Object which is used to securely transfer information over the web(between two parties). It can be used for an authentication system and 
+can also be used for information exchange.The token is mainly composed of header, payload, signature. These three parts are separated by dots(.). JWT defines the structure 
+of information we are sending from one party to the another, and it comes in two forms – Serialized, Deserialized.
+
+Top 3 benefits of JWT-
+1) JWT are better than session cookies
+2) It is stateless, No need to manage sessions.
+3) Good performance.
+
+Given a number x, find out if it is a prime number or not, use javascriptand find out the difference between next prime number after x and x.
+Solution -
+
+// 'number' will hold a random number in
+// the range [0, 99]
+const number = Math.floor(Math.random() * 100);
+
+// Declare 'flag' and initialize it to false.
+let flag = false;
+
+// Since we know that 1 is neither prime nor composite.
+if (number == 1) {
+   console.log(" 1 is neither prime nor composite");
+}
+
+// This is the condition we are concerned about
+// i.e. any positive number greater than 1.
+else if (number > 1) {
+   // Iterate from 2 to number/2.
+   for (let i = 2; i < number / 2; i++) {
+      // Check if 'i' divides 'number' without
+      // leaving the remainder
+      if (number % i == 0) {
+         // If yes then set a flag to true
+         // and exit from the loop.
+         flag = true;
+         break;
+      }
+   }
+
+   // If the flag is found true it means a divisor was found
+   // during the iteration.
+   if (flag == true) console.log(`${number} is not a prime number`);
+   // Otherwise no divisor was found.
+   else console.log(`${number} is a prime number`);
+}
+
+// If the number is less than 1 (either 0 or negative)
+// then we can say it is not a prime number.
+else {
+   console.log(`${number} is not a prime number`);
+}
